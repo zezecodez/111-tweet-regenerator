@@ -59,9 +59,9 @@ function tweetOut() {
 
 		function tweeted(err, data, respoonse) {
 			if(err) {
-				console.log('Something went wrong!', err)
+				console.log('Tweets did not go through!!', err)
 			} else {
-				console.log('It worked!')
+				console.log('Tweet went through and it worked!')
 			}
 		}
 	})
