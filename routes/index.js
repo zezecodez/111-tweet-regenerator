@@ -13,6 +13,13 @@ var params = {
   count: 15
 }
 
+var stream = Twitter.stream('user');
+stream.on('tweet', addToDb);
+
+var arrayLength = totalTweets.length;
+var index = Math.floor((Math.random() * arrayLength) + 1);
+var tweets = data.statuses
+
 function getAll() {
 	db.getAllTweets().then(data => {
 		for(var i = 0; i < data.length; i++) {
@@ -24,21 +31,21 @@ function getAll() {
 
 function getOne() {
 	getAll()
-	const arrayLength = totalTweets.length
-	const index = Math.floor((Math.random() * arrayLength) + 1);
 	return totalTweets[index]
+}
+
+var tweet = {
+	status: totalTweets[index]
 }
 
 Twitter.get('search/tweets', params, getTweets)
 
 function getTweets(err, data, response) {
-	var tweets = data.statuses
 	for(var i = 0; i < tweets.length; i++) {
 		db.addTweet(tweets[i].text)
 	}
 }
 
-	//TWEET OUT ONE RANDOM TWEET FROM DB
 setInterval (tweetOut, 9000*600)
 
 function tweetOut() {
@@ -47,13 +54,7 @@ function tweetOut() {
 		for(var i = 0; i < data.length; i++) {
 			totalTweets.push(data[i].tweet)
 		}
-		let arrayLength = totalTweets.length
-		let index = Math.floor((Math.random() * arrayLength) + 1);
-		console.log('index: ', index) //console.log here is intentionally left in!
-		let tweet = {
-			status: totalTweets[index]
-		}
-
+		console.log('index: ', index)
 		Twitter.post('statuses/update', tweet, tweeted)
 
 		function tweeted(err, data, respoonse) {
@@ -66,9 +67,7 @@ function tweetOut() {
 	})
 }
 
-//ADD TWEETS TO DATABASE AS TWEETED
-const stream = Twitter.stream('user')
-stream.on('tweet', addToDb)
+
 
 function addToDb(event) {
 	if(event.user.screen_name === 'zezecodez') {
