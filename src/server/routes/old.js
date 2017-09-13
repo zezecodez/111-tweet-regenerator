@@ -1,7 +1,7 @@
 var express = require('express');
 var twit = require('twit');
-var config = require('../config.js')
-var db = require('../db/db.js')
+var config = require('../../../config.js')
+var db = require('../../models/db/db.js')
 
 var router = express.Router();
 var Twitter = new twit(config);
@@ -18,7 +18,7 @@ stream.on('tweet', addToDb);
 
 var arrayLength = totalTweets.length;
 var index = Math.floor((Math.random() * arrayLength) + 1);
-var tweets = data.statuses
+
 
 function getAll() {
 	db.getAllTweets().then(data => {
@@ -41,6 +41,7 @@ var tweet = {
 Twitter.get('search/tweets', params, getTweets)
 
 function getTweets(err, data, response) {
+  var tweets = data.statuses
 	for(var i = 0; i < tweets.length; i++) {
 		db.addTweet(tweets[i].text)
 	}
