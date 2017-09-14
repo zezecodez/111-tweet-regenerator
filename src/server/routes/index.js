@@ -1,16 +1,28 @@
 const router = require('express').Router()
 const bot = require('../bot/bot')
-const {addTweet, deleteDuplicates} = require('../../models/tweets_models')
+const {
+  addTweet,
+  getAllTweets
+} = require('../../models/tweets_models')
 
 router.get('/', (req, res) => {
   res.status(200).render('index')
 })
 
-router.get('/tweets', (req, res) => {
+router.get('/api/tweets', (req, res) => {
   res.status(200).render('tweets')
+
   bot.getTweetsFromAPI()
     .then(tweetList => addTweetsToDb(tweetList))
-    .then(deleteDuplicates)
+})
+
+router.get('/tweets', (req, res) => {
+  getAllTweets().then(tweets =>{
+    res.status(200).render('tweets', {tweets})
+  })
+  .catch(err => console.error(err))
+
+
 })
 
 module.exports = router
@@ -22,6 +34,8 @@ function addTweetsToDb(tweetList) {
   })
 }
 
-const addToDb = () => {
+const printTweets = (tweetList) => {
+  tweetList.data.map(() => {
 
+  })
 }
