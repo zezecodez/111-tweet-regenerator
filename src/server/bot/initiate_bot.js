@@ -4,7 +4,7 @@ const bot = new Twit(config)
 
 const favoriteTweet = () => {
   let params = {
-      q: '#graphql, #react ',  // REQUIRED
+      q: '#mongodb ',  // REQUIRED
       result_type: 'recent',
       lang: 'en'
   }
@@ -17,12 +17,8 @@ const favoriteTweet = () => {
     }
     const randomTweet = randomIndex(tweet)   // pick a random tweet
 
-
-    // if random tweet exists
     if (typeof randomTweet != 'undefined') {
-      // Tell TWITTER to 'favorite'
       bot.post('favorites/create', { id: randomTweet.id_str }, (err, response) => {
-        // if there was an error while 'favorite'
         if (err) {
           console.log('CANNOT BE FAVORITE... Error')
         } else {
@@ -33,10 +29,7 @@ const favoriteTweet = () => {
   })
 }
 
-// grab & 'favorite' as soon as program is running...
-favoriteTweet()
-// 'favorite' a tweet in every 30 minutes
-setInterval(favoriteTweet, 1500000)
+setInterval(favoriteTweet, 3000000)
 
 module.exports = {
   favoriteTweet
