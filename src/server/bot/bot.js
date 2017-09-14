@@ -10,7 +10,7 @@ bot.get('account/verify_credentials', { skip_status: true })
   })
 
 const getTweetsFromAPI = () => {
-  return bot.get('statuses/user_timeline', {q: 'hyphyhacker'})
+  return bot.get('statuses/user_timeline', { q: 'hyphyhacker' })
 }
 module.exports = {
   getTweetsFromAPI

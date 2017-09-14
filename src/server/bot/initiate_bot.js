@@ -4,7 +4,7 @@ const bot = new Twit(config)
 
 const favoriteTweet = () => {
   let params = {
-      q: '#nodejs, #Nodejs',  // REQUIRED
+      q: '#graphql, #react ',  // REQUIRED
       result_type: 'recent',
       lang: 'en'
   }
@@ -36,7 +36,7 @@ const favoriteTweet = () => {
 // grab & 'favorite' as soon as program is running...
 favoriteTweet()
 // 'favorite' a tweet in every 30 minutes
-setInterval(favoriteTweet, 1800000)
+setInterval(favoriteTweet, 1500000)
 
 module.exports = {
   favoriteTweet

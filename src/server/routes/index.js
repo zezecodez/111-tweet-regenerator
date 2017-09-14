@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const bot = require('../bot/bot')
+const { autoRetweet } = require('../bot/retweet_bot')
 const { favoriteTweet } = require('../bot/initiate_bot')
 const {
   addTweet,
@@ -28,7 +29,12 @@ router.get('/bot/start', (req, res) => {
   favoriteTweet().then(() => {
     res.render('initiated')
   })
+})
 
+router.get('/bot/retweet', (req, res) => {
+  autoRetweet().then(() => {
+    res.render('retweeted')
+  })
 })
 
 module.exports = router
