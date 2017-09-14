@@ -5,7 +5,16 @@
   <ul class="list-group">
     <% tweets.forEach(function(tweet) { %>
     <li class="list-group-item">
-      <%= tweet.tweet %>&nbsp;<%= tweet.created_on %>
+      <div class="tweet-text">
+        <div>
+          <strong>Tweet:</strong>
+          <%= tweet.tweet %>
+        </div>
+        <div>
+          <strong>Created On:</strong>
+          <%= tweet.created_at %>
+        </div>
+      </div>
     </li>
 
     <% }) %>

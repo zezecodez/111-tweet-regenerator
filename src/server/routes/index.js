@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const bot = require('../bot/bot')
+const { favoriteTweet } = require('../bot/initiate_bot')
 const {
   addTweet,
   getAllTweets
@@ -21,7 +22,12 @@ router.get('/tweets', (req, res) => {
     res.status(200).render('tweets', {tweets})
   })
   .catch(err => console.error(err))
+})
 
+router.get('/bot/start', (req, res) => {
+  favoriteTweet().then(() => {
+    res.render('initiated')
+  })
 
 })
 
