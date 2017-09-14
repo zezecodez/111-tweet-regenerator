@@ -9,20 +9,13 @@ bot.get('account/verify_credentials', { skip_status: true })
     console.log('caught error', err.stack)
   })
   .then(function (result) {
-    // `result` is an Object with keys "data" and "resp".
-    // `data` and `resp` are the same objects as the ones passed
-    // to the callback.
-    // See https://github.com/ttezel/twit#tgetpath-params-callback
-    // for details.
-
   })
-bot.get('statuses/user_timeline', {q: 'hyphyhacker', trim_user: true})
-  .then(data => printData(data))
 
-function printData(data) {
-  data.data.map((i) => {
-    console.log(i.text)
-  })
+const getTweetsFromAPI = () => {
+  return bot.get('statuses/user_timeline', {q: 'hyphyhacker'})
+}
+module.exports = {
+  getTweetsFromAPI
 }
 
 // bot.post('statuses/update', { status: 'hello world! testing my twit bot' })

@@ -12,10 +12,10 @@ const getTweet = () => {
   return db.one(`SELECT * FROM tweets`);
 }
 
-const addTweet = (tweet) => {
+const addTweet = (id, tweet) => {
   db.any(
-    `INSERT INTO tweets (tweet)
-    VALUES ($1)`, [tweet]
+    `INSERT INTO tweets (id, tweet)
+    VALUES ($1::text, $2::text)`, [id, tweet]
   )
 }
 
