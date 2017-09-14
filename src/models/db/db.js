@@ -1,6 +1,6 @@
 var pgp = require('pg-promise')();
 
-var databaseName = 'zezetweets';
+var databaseName = 'zetweetbot';
 var connectionString = process.env.DATABASE_URL || `postgres://${process.env.USER}@localhost:5432/${databaseName}`;
 var db = pgp(connectionString)
 

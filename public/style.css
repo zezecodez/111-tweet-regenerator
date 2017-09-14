@@ -51,3 +51,8 @@ nav .search-form input {
 .page-column-content{
   padding: 1em;
 }
+
+.welcome-header {
+  vertical-align: middle !important;
+	text-align: center !important;
+}
