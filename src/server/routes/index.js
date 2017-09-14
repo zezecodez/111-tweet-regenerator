@@ -10,10 +10,10 @@ router.get('/', (req, res) => {
 })
 
 router.get('/api/tweets', (req, res) => {
-  res.status(200).render('tweets')
-
   bot.getTweetsFromAPI()
     .then(tweetList => addTweetsToDb(tweetList))
+    .then(() => res.status(200).redirect('/tweets'))
+
 })
 
 router.get('/tweets', (req, res) => {
@@ -29,8 +29,8 @@ module.exports = router
 
 function addTweetsToDb(tweetList) {
   tweetList.data.map((i) => {
-    console.log(i.id_str)
-    addTweet(i.id_str, i.text)
+    console.log(typeof i.created_at)
+    addTweet(i.id_str, i.text, i.created_at)
   })
 }
 

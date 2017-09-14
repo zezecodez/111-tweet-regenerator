@@ -1,10 +1,11 @@
 <%- include ../partials/header %>
+<%- include ../partials/tweets_header %>
 
   <h1>Tweets <small>yaddada</small></h1>
   <ul class="list-group">
     <% tweets.forEach(function(tweet) { %>
     <li class="list-group-item">
-      <%= tweet.tweet %>&nbsp;<%= tweet.tweet %>
+      <%= tweet.tweet %>&nbsp;<%= tweet.created_on %>
     </li>
 
     <% }) %>

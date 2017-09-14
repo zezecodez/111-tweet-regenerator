@@ -12,13 +12,15 @@ const getTweet = () => {
   return db.one(`SELECT * FROM tweets`);
 }
 
-const addTweet = (id, tweet) => {
+const addTweet = (id, tweet, created_at) => {
   db.any(
-    `INSERT INTO tweets (id, tweet)
-    VALUES ($1::text, $2::text)`, [id, tweet]
+    `INSERT INTO tweets (id, tweet, created_at)
+    VALUES ($1::text, $2::text, $3::Date)`, [id, tweet, created_at]
   )
 }
 
+
+// with unique ids may not even need this function
 const deleteDuplicates = () => {
   db.any(`DELETE FROM tweets WHERE ctid NOT IN
 (SELECT max(ctid) FROM tweets GROUP BY tweet)`)

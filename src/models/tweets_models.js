@@ -8,8 +8,8 @@ const getTweet = () => {
   return db.getTweet()
 }
 
-const addTweet = (id, tweet) => {
-  db.addTweet(id, tweet)
+const addTweet = (id, tweet, created_at) => {
+  db.addTweet(id, tweet, created_at)
 }
 
 const deleteDuplicates = () => {
