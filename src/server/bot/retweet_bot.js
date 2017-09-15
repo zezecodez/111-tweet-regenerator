@@ -5,7 +5,7 @@ const bot = new twit(config)
 
 const autoRetweet = function() {
   const params = {
-    q: '#heroku',
+    q: '#ethereum',
     result_type: 'recent',
     lang: 'en'
   }

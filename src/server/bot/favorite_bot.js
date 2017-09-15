@@ -4,7 +4,7 @@ const bot = new Twit(config)
 
 const favoriteTweet = () => {
   let params = {
-    q: '#firebase',
+    q: '#ethereum',
     result_type: 'recent',
     lang: 'en'
   }
