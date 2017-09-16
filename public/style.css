@@ -56,3 +56,7 @@ nav .search-form input {
   vertical-align: middle !important;
 	text-align: center !important;
 }
+
+.tweet-text {
+  font-size: 0.8em
+}

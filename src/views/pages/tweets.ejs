@@ -1,0 +1,23 @@
+<%- include ../partials/header %>
+<%- include ../partials/tweets_header %>
+
+  <h1>Tweets <small>yaddada</small></h1>
+  <ul class="list-group">
+    <% tweets.forEach(function(tweet) { %>
+    <li class="list-group-item">
+      <div class="tweet-text">
+        <div>
+          <strong>Tweet:</strong>
+          <%= tweet.tweet %>
+        </div>
+        <div>
+          <strong>Created On:</strong>
+          <%= tweet.created_at %>
+        </div>
+      </div>
+    </li>
+
+    <% }) %>
+  </ul>
+
+<%- include ../partials/footer %>
