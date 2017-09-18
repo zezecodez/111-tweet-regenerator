@@ -40,10 +40,15 @@ router.get('/bot/post', (req, res) => {
 })
 
 router.post('/bot/post', (req, res) => {
-  const { tweet } = req.body
+  const {tweettxt} = req.body
+  console.log(req.body)
+  console.log(postNewTweet)
     // render same page, but with a status update after the post?
     // or render confirmation page?
+    postNewTweet(tweettxt)
+      // call db to update then render my tweets?
     res.render('post_tweet')
+
 
     // after post db should be updated
 

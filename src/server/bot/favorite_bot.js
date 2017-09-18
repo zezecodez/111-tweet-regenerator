@@ -4,7 +4,7 @@ const bot = new Twit(config)
 
 const favoriteTweet = () => {
   let params = {
-    q: '#ethereum',
+    q: '#graphql',
     result_type: 'recent',
     lang: 'en'
   }
@@ -33,7 +33,7 @@ const favoriteTweet = () => {
   })
 }
 
-setInterval(favoriteTweet, 3000000)
+setInterval(favoriteTweet, 10000)
 
 module.exports = {
   favoriteTweet

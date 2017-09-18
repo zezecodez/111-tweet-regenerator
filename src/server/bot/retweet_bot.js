@@ -5,7 +5,7 @@ const bot = new twit(config)
 
 const autoRetweet = function() {
   const params = {
-    q: '#ethereum',
+    q: '#graphql',
     result_type: 'recent',
     lang: 'en'
   }

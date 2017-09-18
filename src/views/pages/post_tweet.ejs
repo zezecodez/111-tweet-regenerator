@@ -2,10 +2,14 @@
 <%- include ../partials/tweets_header %>
 
   <h1>zeTweetBot <small>Post a Tweet!</small></h1>
-  <div class="form-group">
-    <label for="exampleTextArea">Tweet here</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-    <p class="help-block">Help text here.</p>
-  </div>
+
+  <form action="/bot/post" method="POST" role="form">
+    <div class="form-group">
+      <label for="tweettxt">Tweet here</label>
+      <textarea class="form-control" type="text" id="tweettxt"  name="tweettxt" rows="3" required></textarea>
+      <p class="help-block">Help text here.</p>
+      <input type="submit" class="btn btn-primary">Submit</input>
+    </div>
+  </form>
 
 <%- include ../partials/footer %>
