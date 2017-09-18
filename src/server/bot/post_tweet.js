@@ -1,20 +1,25 @@
-const twit = require('twit')
+const Twit = require('twit')
 const config = require('./config')
+const bot = new Twit(config)
 
-const bot = new twit(config)
+console.log('outide function =========')
 
-
-const postNewTweet = () => {
+const postNewTweet = (tweetTxt) => {
+  console.log('yolo inside the postNewTweet', tweetTxt)
   const tweet = {
     status: tweetTxt
   }
+  console.log('IS THIS PRINTING?!?!!?!! inside function::: ')
   bot.post('statuses/update', tweet, (err, data, response) => {
-    if (err) {
+    if (!err) {
+      console.log('we posted!!! ::::', data)
+    } else {
       console.log('Error in posting')
     }
-    console.log('we posted!!! ::::')
   })
 }
-console.log(postNewTweet)
+// console.log(postNewTweet)
 
-module.exports = postNewTweet
+module.exports = {
+  postNewTweet
+}
